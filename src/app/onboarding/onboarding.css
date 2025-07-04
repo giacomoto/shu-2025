@@ -1,7 +1,12 @@
 /* Onboarding Container */
 .onboarding-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 25%, #6b8e23 50%, #8fbc8f 75%, #98fb98 100%);
+  background: linear-gradient(135deg, 
+    rgba(45, 80, 22, 0.9) 0%, 
+    rgba(74, 124, 89, 0.8) 25%, 
+    rgba(107, 142, 35, 0.7) 50%, 
+    rgba(143, 188, 143, 0.6) 75%, 
+    rgba(152, 251, 152, 0.5) 100%);
   position: relative;
   display: flex;
   flex-direction: column;

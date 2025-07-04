@@ -201,6 +201,26 @@ export class MainAppComponent implements OnInit {
     }
   }
 
+  getPageTitle(): string {
+    switch (this.currentTab) {
+      case 'roadmap': return 'Your Itinerary';
+      case 'map': return 'Interactive Map';
+      case 'favorites': return 'Your Favorites';
+      case 'profile': return 'Your Profile';
+      default: return 'OlivIA';
+    }
+  }
+
+  getPageSubtitle(): string {
+    switch (this.currentTab) {
+      case 'roadmap': return `Stay of ${this.userData.stayDuration} ${this.userData.stayDuration === 1 ? 'day' : 'days'}`;
+      case 'map': return 'Explore all points of interest in Spello';
+      case 'favorites': return 'Save the places that interest you most';
+      case 'profile': return 'Manage your preferences and settings';
+      default: return 'Your Spello Experience';
+    }
+  }
+
   trackByDay(index: number, day: number): number {
     return day;
   }

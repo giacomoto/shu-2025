@@ -1,0 +1,36 @@
+<div class="language-select-container">
+  <!-- Background with Italian countryside theme -->
+  <div class="background-overlay"></div>
+  
+
+
+  <!-- Main content area -->
+  <main class="language-content">
+    <div class="language-selection">
+      <div class="language-header-text">
+        <h2 class="language-title">Select your language</h2>
+        <p class="language-subtitle">Scegli la tua lingua</p>
+      </div>
+
+      <div class="language-options">
+        <div class="language-card" (click)="selectLanguage('it')">
+          <div class="language-icon">🇮🇹</div>
+          <div class="language-info">
+            <h3 class="language-name">Italiano</h3>
+            <p class="language-description">Italian</p>
+          </div>
+          <div class="language-arrow">→</div>
+        </div>
+
+        <div class="language-card" (click)="selectLanguage('en')">
+          <div class="language-icon">🇬🇧</div>
+          <div class="language-info">
+            <h3 class="language-name">English</h3>
+            <p class="language-description">Inglese</p>
+          </div>
+          <div class="language-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div> 

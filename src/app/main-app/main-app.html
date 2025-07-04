@@ -1,58 +1,16 @@
 <div class="main-app-container">
-  <!-- Header -->
-  <header class="main-header">
-    <div class="header-content">
-      <div class="logo-section">
-        <div class="olive-icon">
-          <div class="olive-leaf"></div>
-          <div class="olive-fruit"></div>
-        </div>
-        <h1 class="app-title">OlivIA</h1>
-      </div>
-      <div class="user-info">
-        <span class="welcome-text">Welcome!</span>
-        <span class="user-type">{{ userData.userType === 'citizen' ? 'Citizen' : 'Tourist' }}</span>
-      </div>
+  <!-- Page Title Header -->
+  <header class="page-title-header">
+    <div class="page-title-content">
+      <h1 class="page-title">{{ getPageTitle() }}</h1>
+      <p class="page-subtitle">{{ getPageSubtitle() }}</p>
     </div>
   </header>
-
-  <!-- Tab Navigation -->
-  <nav class="tab-navigation">
-    <button class="tab-button" 
-            [class.active]="currentTab === 'roadmap'"
-            (click)="setTab('roadmap')">
-      <span class="tab-icon">🗺️</span>
-      <span class="tab-label">Itinerary</span>
-    </button>
-    <button class="tab-button" 
-            [class.active]="currentTab === 'map'"
-            (click)="setTab('map')">
-      <span class="tab-icon">📍</span>
-      <span class="tab-label">Map</span>
-    </button>
-    <button class="tab-button" 
-            [class.active]="currentTab === 'favorites'"
-            (click)="setTab('favorites')">
-      <span class="tab-icon">❤️</span>
-      <span class="tab-label">Favorites</span>
-    </button>
-    <button class="tab-button" 
-            [class.active]="currentTab === 'profile'"
-            (click)="setTab('profile')">
-      <span class="tab-icon">👤</span>
-      <span class="tab-label">Profile</span>
-    </button>
-  </nav>
 
   <!-- Main Content -->
   <main class="main-content">
     <!-- Roadmap Tab -->
     <div class="tab-content" *ngIf="currentTab === 'roadmap'">
-      <div class="roadmap-header">
-        <h2 class="roadmap-title">Your personalized itinerary</h2>
-        <p class="roadmap-subtitle">Stay of {{ userData.stayDuration }} {{ userData.stayDuration === 1 ? 'day' : 'days' }}</p>
-      </div>
-
       <div class="itinerary-container">
         <div class="day-section" *ngFor="let day of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; trackBy: trackByDay">
           <div class="day-events" *ngIf="getEventsByDay(day).length > 0">
@@ -114,10 +72,6 @@
     <!-- Profile Tab -->
     <div class="tab-content" *ngIf="currentTab === 'profile'">
       <div class="profile-section">
-        <div class="profile-header">
-          <h3>Your Profile</h3>
-        </div>
-        
         <div class="profile-info">
           <div class="info-item">
             <span class="info-label">User type:</span>
@@ -139,4 +93,32 @@
       </div>
     </div>
   </main>
+
+  <!-- Bottom Tab Navigation -->
+  <nav class="bottom-tab-navigation">
+    <button class="tab-button" 
+            [class.active]="currentTab === 'roadmap'"
+            (click)="setTab('roadmap')">
+      <span class="tab-icon">🗺️</span>
+      <span class="tab-label">Itinerary</span>
+    </button>
+    <button class="tab-button" 
+            [class.active]="currentTab === 'map'"
+            (click)="setTab('map')">
+      <span class="tab-icon">📍</span>
+      <span class="tab-label">Map</span>
+    </button>
+    <button class="tab-button" 
+            [class.active]="currentTab === 'favorites'"
+            (click)="setTab('favorites')">
+      <span class="tab-icon">❤️</span>
+      <span class="tab-label">Favorites</span>
+    </button>
+    <button class="tab-button" 
+            [class.active]="currentTab === 'profile'"
+            (click)="setTab('profile')">
+      <span class="tab-icon">👤</span>
+      <span class="tab-label">Profile</span>
+    </button>
+  </nav>
 </div>

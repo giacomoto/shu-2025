@@ -56,6 +56,13 @@ export class OnboardingComponent {
     if (this.currentStep < this.totalSteps) {
       this.currentStep++;
     }
+    
+    // If citizen is selected and we're moving to step 2, redirect to citizen app
+    if (this.currentStep === 2 && this.onboardingData.userType === 'citizen') {
+      console.log('Citizen detected - skipping remaining onboarding and navigating to citizen app...');
+      this.userDataService.setUserData(this.onboardingData);
+      this.router.navigate(['/citizen']);
+    }
   }
 
   previousStep() {
@@ -102,13 +109,15 @@ export class OnboardingComponent {
     console.log('Onboarding completed:', this.onboardingData);
     // Save user data to service
     this.userDataService.setUserData(this.onboardingData);
-    // Navigate to main app
-    console.log('Attempting to navigate to /main...');
-    this.router.navigate(['/main']).then(() => {
-      console.log('Navigation successful');
-    }).catch((error) => {
-      console.error('Navigation failed:', error);
-    });
+    
+    // Navigate based on user type
+    if (this.onboardingData.userType === 'citizen') {
+      console.log('Citizen detected - navigating to citizen dashboard...');
+      this.router.navigate(['/citizen']);
+    } else {
+      console.log('Tourist detected - navigating to main app...');
+      this.router.navigate(['/main']);
+    }
   }
 
   getStepTitle(): string {

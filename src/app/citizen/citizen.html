@@ -1,0 +1,183 @@
+<div class="citizen-container">
+  <!-- Page Title Header -->
+  <header class="page-title-header">
+    <div class="page-title-content">
+      <h1 class="page-title">{{ getPageTitle() }}</h1>
+      <p class="page-subtitle">{{ getPageSubtitle() }}</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Services Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'services'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('services'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transport Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'transport'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('transport'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'health'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('health'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'education'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('education'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Events Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'events'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('events'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- News Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'news'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('news'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Culture Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'culture'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('culture'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sports Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'sports'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('sports'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emergency Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'emergency'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('emergency'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'shopping'">
+      <div class="links-grid">
+        <div class="link-card" 
+             *ngFor="let link of getLinksByCategory('shopping'); trackBy: trackByLink"
+             (click)="openLink(link)">
+          <div class="link-icon">{{ link.icon }}</div>
+          <div class="link-info">
+            <h3 class="link-title">{{ link.title }}</h3>
+            <p class="link-description">{{ link.description }}</p>
+          </div>
+          <div class="link-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Tab Navigation -->
+  <nav class="bottom-tab-navigation">
+    <button class="tab-button" 
+            *ngFor="let category of categories"
+            [class.active]="currentTab === category.id"
+            (click)="setTab(category.id)">
+      <span class="tab-icon">{{ category.icon }}</span>
+      <span class="tab-label">{{ category.name }}</span>
+    </button>
+  </nav>
+</div> 

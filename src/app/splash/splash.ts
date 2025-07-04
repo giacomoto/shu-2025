@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class SplashComponent {
   constructor(private router: Router) {
-    // Auto-navigate to onboarding after 3 seconds
+    // Auto-navigate to language selection after 3 seconds
     setTimeout(() => {
-      this.router.navigate(['/onboarding']);
+      this.router.navigate(['/language']);
     }, 3000);
   }
 }
