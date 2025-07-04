@@ -12,9 +12,8 @@
     <!-- Services Tab -->
     <div class="tab-content" *ngIf="currentTab === 'services'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('services'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('services'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -28,9 +27,8 @@
     <!-- Transport Tab -->
     <div class="tab-content" *ngIf="currentTab === 'transport'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('transport'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('transport'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -44,9 +42,8 @@
     <!-- Health Tab -->
     <div class="tab-content" *ngIf="currentTab === 'health'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('health'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('health'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -60,9 +57,8 @@
     <!-- Education Tab -->
     <div class="tab-content" *ngIf="currentTab === 'education'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('education'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('education'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -76,9 +72,8 @@
     <!-- Events Tab -->
     <div class="tab-content" *ngIf="currentTab === 'events'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('events'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('events'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -92,9 +87,8 @@
     <!-- News Tab -->
     <div class="tab-content" *ngIf="currentTab === 'news'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('news'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('news'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -108,9 +102,8 @@
     <!-- Culture Tab -->
     <div class="tab-content" *ngIf="currentTab === 'culture'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('culture'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('culture'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -124,9 +117,8 @@
     <!-- Sports Tab -->
     <div class="tab-content" *ngIf="currentTab === 'sports'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('sports'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('sports'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -140,9 +132,8 @@
     <!-- Emergency Tab -->
     <div class="tab-content" *ngIf="currentTab === 'emergency'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('emergency'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('emergency'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -156,9 +147,8 @@
     <!-- Shopping Tab -->
     <div class="tab-content" *ngIf="currentTab === 'shopping'">
       <div class="links-grid">
-        <div class="link-card" 
-             *ngFor="let link of getLinksByCategory('shopping'); trackBy: trackByLink"
-             (click)="openLink(link)">
+        <div class="link-card" *ngFor="let link of getLinksByCategory('shopping'); trackBy: trackByLink"
+          (click)="openLink(link)">
           <div class="link-icon">{{ link.icon }}</div>
           <div class="link-info">
             <h3 class="link-title">{{ link.title }}</h3>
@@ -172,12 +162,10 @@
 
   <!-- Bottom Tab Navigation -->
   <nav class="bottom-tab-navigation">
-    <button class="tab-button" 
-            *ngFor="let category of categories"
-            [class.active]="currentTab === category.id"
-            (click)="setTab(category.id)">
+    <button class="tab-button" *ngFor="let category of categories" [class.active]="currentTab === category.id"
+      (click)="setTab(category.id)">
       <span class="tab-icon">{{ category.icon }}</span>
       <span class="tab-label">{{ category.name }}</span>
     </button>
   </nav>
-</div> 
+</div>
