@@ -17,7 +17,7 @@
       <div class="progress-bar">
         <div class="progress-fill" [style.width.%]="(currentStep / totalSteps) * 100"></div>
       </div>
-      <span class="progress-text">{{ currentStep }} di {{ totalSteps }}</span>
+      <span class="progress-text">{{ currentStep }} of {{ totalSteps }}</span>
     </div>
   </header>
 
@@ -35,8 +35,8 @@
              [class.selected]="onboardingData.userType === 'citizen'"
              (click)="selectUserType('citizen')">
           <div class="option-icon">🏠</div>
-          <h3 class="option-title">Cittadino di Spello</h3>
-          <p class="option-description">Vivo qui e voglio scoprire di più sulla mia città</p>
+          <h3 class="option-title">Spello Citizen</h3>
+          <p class="option-description">I live here and want to discover more about my city</p>
           <div class="selection-indicator" *ngIf="onboardingData.userType === 'citizen'">✓</div>
         </div>
 
@@ -44,8 +44,8 @@
              [class.selected]="onboardingData.userType === 'tourist'"
              (click)="selectUserType('tourist')">
           <div class="option-icon">✈️</div>
-          <h3 class="option-title">Turista</h3>
-          <p class="option-description">Sono in visita e voglio esplorare Spello</p>
+          <h3 class="option-title">Tourist</h3>
+          <p class="option-description">I'm visiting and want to explore Spello</p>
           <div class="selection-indicator" *ngIf="onboardingData.userType === 'tourist'">✓</div>
         </div>
       </div>
@@ -109,7 +109,7 @@
     <button class="nav-button secondary" 
             *ngIf="currentStep > 1"
             (click)="previousStep()">
-      ← Indietro
+      ← Back
     </button>
     
     <div class="nav-spacer" *ngIf="currentStep === 1"></div>
@@ -117,7 +117,7 @@
     <button class="nav-button primary" 
             [disabled]="!canProceed()"
             (click)="currentStep === totalSteps ? completeOnboarding() : nextStep()">
-      {{ currentStep === totalSteps ? 'Inizia l\'esperienza' : 'Avanti →' }}
+      {{ currentStep === totalSteps ? 'Start Experience' : 'Next →' }}
     </button>
   </footer>
 </div>

@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-interface OnboardingData {
-  userType: 'citizen' | 'tourist' | null;
-  stayDuration: number | null;
-  goals: string[];
-}
+import { Router } from '@angular/router';
+import { UserDataService, OnboardingData } from '../services/user-data';
 
 @Component({
   selector: 'app-onboarding',
@@ -25,18 +21,36 @@ export class OnboardingComponent {
     goals: []
   };
 
-  availableGoals = [
-    'Esplorare i monumenti storici',
-    'Assaggiare la cucina locale',
-    'Visitare le cantine e degustare vini',
-    'Fare shopping di prodotti tipici',
-    'Fotografare i paesaggi',
-    'Partecipare a eventi culturali',
-    'Conoscere la storia di Spello',
-    'Camminare per le vie del centro',
-    'Visitare le chiese e l\'arte sacra',
-    'Rilassarsi e godersi l\'atmosfera'
+  userTypes = [
+    { value: 'citizen', label: 'Cittadino', icon: '🏠' },
+    { value: 'tourist', label: 'Turista', icon: '🧳' }
   ];
+
+  stayDurationOptions = [
+    { value: 1, label: '1 giorno' },
+    { value: 2, label: '2 giorni' },
+    { value: 3, label: '3 giorni' },
+    { value: 4, label: '4 giorni' },
+    { value: 5, label: '5 giorni' },
+    { value: 6, label: '6 giorni' },
+    { value: 7, label: '1 settimana' }
+  ];
+
+  availableGoals = [
+    'Explore historical monuments',
+    'Taste local cuisine',
+    'Shop for artisan crafts',
+    'Participate in cultural events',
+    'Go hiking in nature',
+    'Visit wineries and taste wines',
+    'Photograph landscapes',
+    'Relax and enjoy the atmosphere'
+  ];
+
+  constructor(
+    private router: Router,
+    private userDataService: UserDataService
+  ) {}
 
   nextStep() {
     if (this.currentStep < this.totalSteps) {
@@ -54,18 +68,8 @@ export class OnboardingComponent {
     this.onboardingData.userType = type;
   }
 
-  onDurationChange(event: any) {
-    this.onboardingData.stayDuration = parseInt(event.target.value);
-  }
-
-  getDurationDisplay(): string {
-    if (!this.onboardingData.stayDuration) return '1';
-    return this.onboardingData.stayDuration.toString();
-  }
-
-  getDurationUnit(): string {
-    if (!this.onboardingData.stayDuration) return 'Giorno';
-    return this.onboardingData.stayDuration === 1 ? 'Giorno' : 'Giorni';
+  selectStayDuration(duration: number) {
+    this.onboardingData.stayDuration = duration;
   }
 
   toggleGoal(goal: string) {
@@ -75,6 +79,10 @@ export class OnboardingComponent {
     } else {
       this.onboardingData.goals.push(goal);
     }
+  }
+
+  isGoalSelected(goal: string): boolean {
+    return this.onboardingData.goals.includes(goal);
   }
 
   canProceed(): boolean {
@@ -92,18 +100,25 @@ export class OnboardingComponent {
 
   completeOnboarding() {
     console.log('Onboarding completed:', this.onboardingData);
-    // Here you would typically save the data and navigate to the main app
-    // For now, we'll just log it
+    // Save user data to service
+    this.userDataService.setUserData(this.onboardingData);
+    // Navigate to main app
+    console.log('Attempting to navigate to /main...');
+    this.router.navigate(['/main']).then(() => {
+      console.log('Navigation successful');
+    }).catch((error) => {
+      console.error('Navigation failed:', error);
+    });
   }
 
   getStepTitle(): string {
     switch (this.currentStep) {
       case 1:
-        return 'Chi sei?';
+        return 'Who are you?';
       case 2:
-        return 'Quanto tempo rimani?';
+        return 'How long are you staying?';
       case 3:
-        return 'Cosa vuoi fare?';
+        return 'What do you want to do?';
       default:
         return '';
     }
@@ -112,13 +127,25 @@ export class OnboardingComponent {
   getStepDescription(): string {
     switch (this.currentStep) {
       case 1:
-        return 'Seleziona il tuo profilo per personalizzare la tua esperienza';
+        return 'Select your profile to personalize your experience';
       case 2:
-        return 'Aiutaci a pianificare al meglio il tuo soggiorno';
+        return 'Help us plan your stay better';
       case 3:
-        return 'Scegli le attività che ti interessano di più';
+        return 'Choose the activities that interest you most';
       default:
         return '';
     }
+  }
+
+  onDurationChange(event: any) {
+    // Il binding ngModel aggiorna già stayDuration, quindi qui non serve altro
+  }
+
+  getDurationDisplay(): string {
+    return this.onboardingData.stayDuration?.toString() ?? '';
+  }
+
+  getDurationUnit(): string {
+    return this.onboardingData.stayDuration === 1 ? 'day' : 'days';
   }
 }
