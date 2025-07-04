@@ -12,16 +12,16 @@
     <!-- Roadmap Tab -->
     <div class="tab-content" *ngIf="currentTab === 'roadmap'">
       <div class="itinerary-container">
-        <div class="day-section" *ngFor="let day of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; trackBy: trackByDay">
+        <div class="day-section"
+          *ngFor="let day of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; trackBy: trackByDay">
           <div class="day-events" *ngIf="getEventsByDay(day).length > 0">
             <div class="day-header">
               <h3 class="day-title">Day {{ day }}</h3>
             </div>
-            
+
             <div class="events-list">
-              <div class="event-card" 
-                   *ngFor="let event of getEventsByDay(day); trackBy: trackByEvent"
-                   [class]="'event-' + getEventColor(event.type)">
+              <div class="event-card" *ngFor="let event of getEventsByDay(day); trackBy: trackByEvent"
+                [class]="'event-' + getEventColor(event.type)">
                 <div class="event-header">
                   <div class="event-icon">{{ getEventIcon(event.type) }}</div>
                   <div class="event-info">
@@ -29,7 +29,7 @@
                     <p class="event-description">{{ event.description }}</p>
                   </div>
                 </div>
-                
+
                 <div class="event-details">
                   <div class="event-meta">
                     <span class="event-time" *ngIf="event.time">{{ event.time }}</span>
@@ -65,6 +65,15 @@
       </div>
     </div>
 
+    <!-- Chatbot Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'chatbot'">
+      <div class="chatbot-placeholder">
+        <div class="chatbot-icon">🤖</div>
+        <h3>Chatbot Assistant</h3>
+        <p>Ask questions and get help from the virtual assistant.</p>
+      </div>
+    </div>
+
     <!-- Profile Tab -->
     <div class="tab-content" *ngIf="currentTab === 'profile'">
       <div class="profile-section">
@@ -73,12 +82,13 @@
             <span class="info-label">User type:</span>
             <span class="info-value">{{ userData.userType === 'citizen' ? 'Spello Citizen' : 'Tourist' }}</span>
           </div>
-          
+
           <div class="info-item">
             <span class="info-label">Stay duration:</span>
-            <span class="info-value">{{ userData.stayDuration }} {{ userData.stayDuration === 1 ? 'day' : 'days' }}</span>
+            <span class="info-value">{{ userData.stayDuration }} {{ userData.stayDuration === 1 ? 'day' : 'days'
+              }}</span>
           </div>
-          
+
           <div class="info-item">
             <span class="info-label">Goals:</span>
             <div class="goals-list">
@@ -92,27 +102,19 @@
 
   <!-- Bottom Tab Navigation -->
   <nav class="bottom-tab-navigation">
-    <button class="tab-button" 
-            [class.active]="currentTab === 'roadmap'"
-            (click)="setTab('roadmap')">
+    <button class="tab-button" [class.active]="currentTab === 'roadmap'" (click)="setTab('roadmap')">
       <span class="tab-icon">🗺️</span>
       <span class="tab-label">Itinerary</span>
     </button>
-    <button class="tab-button" 
-            [class.active]="currentTab === 'map'"
-            (click)="setTab('map')">
+    <button class="tab-button" [class.active]="currentTab === 'map'" (click)="setTab('map')">
       <span class="tab-icon">📍</span>
       <span class="tab-label">Map</span>
     </button>
-    <button class="tab-button" 
-            [class.active]="currentTab === 'favorites'"
-            (click)="setTab('favorites')">
-      <span class="tab-icon">❤️</span>
-      <span class="tab-label">Favorites</span>
+    <button class="tab-button" [class.active]="currentTab === 'chatbot'" (click)="setTab('chatbot')">
+      <span class="tab-icon">🤖</span>
+      <span class="tab-label">Chatbot</span>
     </button>
-    <button class="tab-button" 
-            [class.active]="currentTab === 'profile'"
-            (click)="setTab('profile')">
+    <button class="tab-button" [class.active]="currentTab === 'profile'" (click)="setTab('profile')">
       <span class="tab-icon">👤</span>
       <span class="tab-label">Profile</span>
     </button>

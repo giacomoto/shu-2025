@@ -23,16 +23,16 @@ interface Event {
   standalone: true,
   imports: [CommonModule, MapGraph],
   templateUrl: './main-app.html',
-  styleUrl: './main-app.css'
+  styleUrl: './main-app.css',
 })
 export class MainAppComponent implements OnInit {
   currentTab = 'roadmap';
-  
+
   userData: OnboardingData = {
     userType: null,
     stayDuration: 1,
     goals: [],
-    accessibilityNeeds: []
+    accessibilityNeeds: [],
   };
 
   events: Event[] = [
@@ -46,7 +46,7 @@ export class MainAppComponent implements OnInit {
       location: 'Piazza della Repubblica',
       category: 'Gastronomy',
       duration: '45 min',
-      price: '€5-8'
+      price: '€5-8',
     },
     {
       id: '2',
@@ -58,7 +58,7 @@ export class MainAppComponent implements OnInit {
       location: 'Via Consolare',
       category: 'Art & History',
       duration: '1h 30min',
-      price: 'Free'
+      price: 'Free',
     },
     {
       id: '3',
@@ -70,7 +70,7 @@ export class MainAppComponent implements OnInit {
       location: 'Spello Walls',
       category: 'Nature',
       duration: '1h',
-      price: 'Free'
+      price: 'Free',
     },
     {
       id: '4',
@@ -82,7 +82,7 @@ export class MainAppComponent implements OnInit {
       location: 'Via Giulia',
       category: 'Gastronomy',
       duration: '1h 30min',
-      price: '€25-35'
+      price: '€25-35',
     },
     {
       id: '5',
@@ -94,7 +94,7 @@ export class MainAppComponent implements OnInit {
       location: 'Historic Center',
       category: 'Culture',
       duration: '2h',
-      price: '€15'
+      price: '€15',
     },
     {
       id: '6',
@@ -106,7 +106,7 @@ export class MainAppComponent implements OnInit {
       location: 'Provincial Road',
       category: 'Wine & Food',
       duration: '1h',
-      price: '€20'
+      price: '€20',
     },
     {
       id: '7',
@@ -118,7 +118,7 @@ export class MainAppComponent implements OnInit {
       location: 'Via Roma',
       category: 'Shopping',
       duration: '1h 30min',
-      price: 'Variable'
+      price: 'Variable',
     },
     {
       id: '8',
@@ -130,19 +130,19 @@ export class MainAppComponent implements OnInit {
       location: 'Via Salnitraria',
       category: 'Gastronomy',
       duration: '2h',
-      price: '€40-60'
+      price: '€40-60',
     },
     {
       id: '9',
-      title: 'Church of Sant\'Andrea',
+      title: "Church of Sant'Andrea",
       description: 'Romanesque church with medieval artworks',
       type: 'poi',
       day: 3,
       time: '09:00',
-      location: 'Via Sant\'Andrea',
+      location: "Via Sant'Andrea",
       category: 'Art & History',
       duration: '45min',
-      price: 'Free'
+      price: 'Free',
     },
     {
       id: '10',
@@ -154,8 +154,8 @@ export class MainAppComponent implements OnInit {
       location: 'Monte Subasio',
       category: 'Nature',
       duration: '3h',
-      price: '€10'
-    }
+      price: '€10',
+    },
   ];
 
   constructor(
@@ -173,53 +173,77 @@ export class MainAppComponent implements OnInit {
   }
 
   getEventsByDay(day: number): Event[] {
-    return this.events.filter(event => event.day === day);
+    return this.events.filter((event) => event.day === day);
   }
 
   getEventIcon(type: string): string {
     switch (type) {
-      case 'event': return '🎉';
-      case 'poi': return '🏛️';
-      case 'activity': return '🎯';
-      default: return '📍';
+      case 'event':
+        return '🎉';
+      case 'poi':
+        return '🏛️';
+      case 'activity':
+        return '🎯';
+      default:
+        return '📍';
     }
   }
 
   getEventColor(type: string): string {
     switch (type) {
-      case 'event': return 'event';
-      case 'poi': return 'poi';
-      case 'activity': return 'activity';
-      default: return 'default';
+      case 'event':
+        return 'event';
+      case 'poi':
+        return 'poi';
+      case 'activity':
+        return 'activity';
+      default:
+        return 'default';
     }
   }
 
   getTabTitle(): string {
     switch (this.currentTab) {
-      case 'map': return 'Map';
-      case 'favorites': return 'Favorites';
-      case 'profile': return 'Profile';
-      default: return 'Itinerary';
+      case 'map':
+        return 'Map';
+      case 'chatbot':
+        return 'Chatbot';
+      case 'profile':
+        return 'Profile';
+      default:
+        return 'Itinerary';
     }
   }
 
   getPageTitle(): string {
     switch (this.currentTab) {
-      case 'roadmap': return 'Your Itinerary';
-      case 'map': return 'Interactive Map';
-      case 'favorites': return 'Your Favorites';
-      case 'profile': return 'Your Profile';
-      default: return 'OlivIA';
+      case 'roadmap':
+        return 'Your Itinerary';
+      case 'map':
+        return 'Interactive Map';
+      case 'chatbot':
+        return 'Chatbot Assistant';
+      case 'profile':
+        return 'Your Profile';
+      default:
+        return 'OlivIA';
     }
   }
 
   getPageSubtitle(): string {
     switch (this.currentTab) {
-      case 'roadmap': return `Stay of ${this.userData.stayDuration} ${this.userData.stayDuration === 1 ? 'day' : 'days'}`;
-      case 'map': return 'Explore all points of interest in Spello';
-      case 'favorites': return 'Save the places that interest you most';
-      case 'profile': return 'Manage your preferences and settings';
-      default: return 'Your Spello Experience';
+      case 'roadmap':
+        return `Stay of ${this.userData.stayDuration} ${
+          this.userData.stayDuration === 1 ? 'day' : 'days'
+        }`;
+      case 'map':
+        return 'Explore all points of interest in Spello';
+      case 'chatbot':
+        return 'Ask questions and get help from the virtual assistant';
+      case 'profile':
+        return 'Manage your preferences and settings';
+      default:
+        return 'Your Spello Experience';
     }
   }
 
