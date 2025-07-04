@@ -1,0 +1,123 @@
+<div class="onboarding-container">
+  <!-- Background with Italian countryside theme -->
+  <div class="background-overlay"></div>
+  
+  <!-- Header with OlivIA branding -->
+  <header class="onboarding-header">
+    <div class="logo-section">
+      <div class="olive-icon-small">
+        <div class="olive-leaf-small"></div>
+        <div class="olive-fruit-small"></div>
+      </div>
+      <h1 class="app-title-small">OlivIA</h1>
+    </div>
+    
+    <!-- Progress indicator -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="(currentStep / totalSteps) * 100"></div>
+      </div>
+      <span class="progress-text">{{ currentStep }} di {{ totalSteps }}</span>
+    </div>
+  </header>
+
+  <!-- Main content area -->
+  <main class="onboarding-content">
+    <!-- Step 1: User Type Selection -->
+    <div class="step-container" *ngIf="currentStep === 1">
+      <div class="step-header">
+        <h2 class="step-title">{{ getStepTitle() }}</h2>
+        <p class="step-description">{{ getStepDescription() }}</p>
+      </div>
+
+      <div class="options-grid">
+        <div class="option-card" 
+             [class.selected]="onboardingData.userType === 'citizen'"
+             (click)="selectUserType('citizen')">
+          <div class="option-icon">🏠</div>
+          <h3 class="option-title">Cittadino di Spello</h3>
+          <p class="option-description">Vivo qui e voglio scoprire di più sulla mia città</p>
+          <div class="selection-indicator" *ngIf="onboardingData.userType === 'citizen'">✓</div>
+        </div>
+
+        <div class="option-card" 
+             [class.selected]="onboardingData.userType === 'tourist'"
+             (click)="selectUserType('tourist')">
+          <div class="option-icon">✈️</div>
+          <h3 class="option-title">Turista</h3>
+          <p class="option-description">Sono in visita e voglio esplorare Spello</p>
+          <div class="selection-indicator" *ngIf="onboardingData.userType === 'tourist'">✓</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Stay Duration -->
+    <div class="step-container" *ngIf="currentStep === 2">
+      <div class="step-header">
+        <h2 class="step-title">{{ getStepTitle() }}</h2>
+        <p class="step-description">{{ getStepDescription() }}</p>
+      </div>
+
+      <div class="duration-selector">
+        <div class="range-container">
+          <input 
+            type="range" 
+            min="1" 
+            max="15" 
+            [(ngModel)]="onboardingData.stayDuration" 
+            class="duration-range"
+            (input)="onDurationChange($event)"
+          >
+          <div class="range-labels">
+            <span class="range-label">1</span>
+            <span class="range-label">15+</span>
+          </div>
+        </div>
+        
+        <div class="selected-duration">
+          <div class="duration-display">
+            <span class="duration-number">{{ getDurationDisplay() }}</span>
+            <span class="duration-unit">{{ getDurationUnit() }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Goals Selection -->
+    <div class="step-container" *ngIf="currentStep === 3">
+      <div class="step-header">
+        <h2 class="step-title">{{ getStepTitle() }}</h2>
+        <p class="step-description">{{ getStepDescription() }}</p>
+      </div>
+
+      <div class="goals-grid">
+        <div class="goal-card" 
+             *ngFor="let goal of availableGoals"
+             [class.selected]="onboardingData.goals.includes(goal)"
+             (click)="toggleGoal(goal)">
+          <div class="goal-content">
+            <span class="goal-text">{{ goal }}</span>
+            <div class="goal-checkbox" *ngIf="onboardingData.goals.includes(goal)">✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Navigation buttons -->
+  <footer class="onboarding-footer">
+    <button class="nav-button secondary" 
+            *ngIf="currentStep > 1"
+            (click)="previousStep()">
+      ← Indietro
+    </button>
+    
+    <div class="nav-spacer" *ngIf="currentStep === 1"></div>
+    
+    <button class="nav-button primary" 
+            [disabled]="!canProceed()"
+            (click)="currentStep === totalSteps ? completeOnboarding() : nextStep()">
+      {{ currentStep === totalSteps ? 'Inizia l\'esperienza' : 'Avanti →' }}
+    </button>
+  </footer>
+</div>
