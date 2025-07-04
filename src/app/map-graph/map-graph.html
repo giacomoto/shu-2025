@@ -1,0 +1,16 @@
+<div id="roadmap-svg" class="roadmap-svg-container"></div>
+
+<div *ngIf="popup.visible" class="roadmap-popup-overlay">
+  <div class="roadmap-popup-modal">
+    <button class="close-btn" (click)="closePopup()">×</button>
+    <h3>{{ popup.event.title }}</h3>
+    <p>{{ popup.event.description }}</p>
+    <div *ngIf="popup.event.time || popup.event.duration || popup.event.price" class="popup-meta">
+      <span *ngIf="popup.event.time">🕒 {{ popup.event.time }}</span>
+      <span *ngIf="popup.event.duration">⏳ {{ popup.event.duration }}</span>
+      <span *ngIf="popup.event.price">💶 {{ popup.event.price }}</span>
+    </div>
+    <div *ngIf="popup.event.location">📍 {{ popup.event.location }}</div>
+    <div *ngIf="popup.event.category">🏷️ {{ popup.event.category }}</div>
+  </div>
+</div>

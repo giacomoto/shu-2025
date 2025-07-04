@@ -5,6 +5,7 @@ export interface OnboardingData {
   userType: 'citizen' | 'tourist' | null;
   stayDuration: number | null;
   goals: string[];
+  accessibilityNeeds: string[];
 }
 
 @Injectable({
@@ -14,7 +15,8 @@ export class UserDataService {
   private userDataSubject = new BehaviorSubject<OnboardingData>({
     userType: null,
     stayDuration: 1,
-    goals: []
+    goals: [],
+    accessibilityNeeds: []
   });
 
   userData$ = this.userDataSubject.asObservable();

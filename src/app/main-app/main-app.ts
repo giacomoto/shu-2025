@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserDataService, OnboardingData } from '../services/user-data';
+import { MapGraph } from '../map-graph/map-graph';
 
 interface Event {
   id: string;
@@ -20,7 +21,7 @@ interface Event {
 @Component({
   selector: 'app-main-app',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MapGraph],
   templateUrl: './main-app.html',
   styleUrl: './main-app.css'
 })
@@ -30,7 +31,8 @@ export class MainAppComponent implements OnInit {
   userData: OnboardingData = {
     userType: null,
     stayDuration: 1,
-    goals: []
+    goals: [],
+    accessibilityNeeds: []
   };
 
   events: Event[] = [

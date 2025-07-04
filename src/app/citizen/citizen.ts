@@ -26,7 +26,8 @@ export class CitizenComponent implements OnInit {
   userData: OnboardingData = {
     userType: null,
     stayDuration: 1,
-    goals: []
+    goals: [],
+    accessibilityNeeds: []
   };
 
   citizenLinks: CitizenLink[] = [

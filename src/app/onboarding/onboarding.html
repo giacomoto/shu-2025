@@ -23,8 +23,32 @@
 
   <!-- Main content area -->
   <main class="onboarding-content">
-    <!-- Step 1: User Type Selection -->
+    <!-- Step 1: Accessibility Support -->
     <div class="step-container" *ngIf="currentStep === 1">
+      <div class="step-header">
+        <h2 class="step-title">{{ getStepTitle() }}</h2>
+        <p class="step-description">{{ getStepDescription() }}</p>
+      </div>
+
+      <div class="accessibility-grid">
+        <div class="accessibility-card" 
+             *ngFor="let option of accessibilityOptions"
+             [class.selected]="isAccessibilityNeedSelected(option.value)"
+             (click)="toggleAccessibilityNeed(option.value)">
+          <div class="accessibility-content">
+            <div class="accessibility-icon">{{ option.icon }}</div>
+            <div class="accessibility-text">
+              <h3 class="accessibility-title">{{ option.label }}</h3>
+              <p class="accessibility-description">{{ option.description }}</p>
+            </div>
+            <div class="accessibility-checkbox" *ngIf="isAccessibilityNeedSelected(option.value)">✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: User Type Selection -->
+    <div class="step-container" *ngIf="currentStep === 2">
       <div class="step-header">
         <h2 class="step-title">{{ getStepTitle() }}</h2>
         <p class="step-description">{{ getStepDescription() }}</p>
@@ -51,8 +75,8 @@
       </div>
     </div>
 
-    <!-- Step 2: Stay Duration -->
-    <div class="step-container" *ngIf="currentStep === 2">
+    <!-- Step 3: Stay Duration -->
+    <div class="step-container" *ngIf="currentStep === 3">
       <div class="step-header">
         <h2 class="step-title">{{ getStepTitle() }}</h2>
         <p class="step-description">{{ getStepDescription() }}</p>
@@ -83,8 +107,8 @@
       </div>
     </div>
 
-    <!-- Step 3: Goals Selection -->
-    <div class="step-container" *ngIf="currentStep === 3">
+    <!-- Step 4: Goals Selection -->
+    <div class="step-container" *ngIf="currentStep === 4">
       <div class="step-header">
         <h2 class="step-title">{{ getStepTitle() }}</h2>
         <p class="step-description">{{ getStepDescription() }}</p>

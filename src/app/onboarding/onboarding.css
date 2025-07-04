@@ -206,7 +206,7 @@
   right: 1rem;
   width: 30px;
   height: 30px;
-  background: #00ff88;
+  background: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -214,6 +214,86 @@
   color: #2d5016;
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+/* Accessibility Grid */
+.accessibility-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.accessibility-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.accessibility-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility-card.selected {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.accessibility-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.accessibility-text {
+  flex: 1;
+}
+
+.accessibility-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.5rem;
+}
+
+.accessibility-description {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.accessibility-checkbox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d5016;
+  font-weight: bold;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 /* Duration Selector */
@@ -454,6 +534,10 @@
     grid-template-columns: 1fr;
   }
 
+  .accessibility-grid {
+    grid-template-columns: 1fr;
+  }
+
   .duration-selector {
     gap: 1.5rem;
   }
@@ -488,6 +572,22 @@
 
   .nav-spacer {
     display: none;
+  }
+
+  .accessibility-card {
+    padding: 1.25rem;
+  }
+
+  .accessibility-icon {
+    font-size: 2rem;
+  }
+
+  .accessibility-title {
+    font-size: 1.1rem;
+  }
+
+  .accessibility-description {
+    font-size: 0.9rem;
   }
 }
 

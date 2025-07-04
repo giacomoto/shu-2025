@@ -53,11 +53,7 @@
 
     <!-- Map Tab -->
     <div class="tab-content" *ngIf="currentTab === 'map'">
-      <div class="map-placeholder">
-        <div class="map-icon">🗺️</div>
-        <h3>Interactive Map</h3>
-        <p>Here you'll see the map with all points of interest</p>
-      </div>
+      <app-map-graph></app-map-graph>
     </div>
 
     <!-- Favorites Tab -->

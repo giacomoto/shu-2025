@@ -13,12 +13,13 @@ import { UserDataService, OnboardingData } from '../services/user-data';
 })
 export class OnboardingComponent {
   currentStep = 1;
-  totalSteps = 3;
+  totalSteps = 4;
   
   onboardingData: OnboardingData = {
     userType: null,
     stayDuration: 1,
-    goals: []
+    goals: [],
+    accessibilityNeeds: []
   };
 
   userTypes = [
@@ -47,6 +48,14 @@ export class OnboardingComponent {
     'Relax and enjoy the atmosphere'
   ];
 
+  accessibilityOptions = [
+    { value: 'visual', label: 'Visual impairments', icon: '👁️', description: 'Need larger text, high contrast, or audio descriptions' },
+    { value: 'mobility', label: 'Mobility assistance', icon: '♿', description: 'Need wheelchair access, ramps, or mobility support' },
+    { value: 'hearing', label: 'Hearing impairments', icon: '👂', description: 'Need captions, sign language, or visual alerts' },
+    { value: 'cognitive', label: 'Cognitive support', icon: '🧠', description: 'Need simplified language, clear instructions, or memory aids' },
+    { value: 'none', label: 'No special needs', icon: '✅', description: 'I don\'t need any accessibility assistance' }
+  ];
+
   constructor(
     private router: Router,
     private userDataService: UserDataService
@@ -57,8 +66,8 @@ export class OnboardingComponent {
       this.currentStep++;
     }
     
-    // If citizen is selected and we're moving to step 2, redirect to citizen app
-    if (this.currentStep === 2 && this.onboardingData.userType === 'citizen') {
+    // If citizen is selected and we're moving to step 3 (now after userType selection), redirect to citizen app
+    if (this.currentStep === 3 && this.onboardingData.userType === 'citizen') {
       console.log('Citizen detected - skipping remaining onboarding and navigating to citizen app...');
       this.userDataService.setUserData(this.onboardingData);
       this.router.navigate(['/citizen']);
@@ -92,13 +101,41 @@ export class OnboardingComponent {
     return this.onboardingData.goals.includes(goal);
   }
 
+  toggleAccessibilityNeed(need: string) {
+    if (need === 'none') {
+      // If "none" is selected, clear all other selections
+      this.onboardingData.accessibilityNeeds = ['none'];
+    } else {
+      // Remove "none" if it was previously selected
+      this.onboardingData.accessibilityNeeds = this.onboardingData.accessibilityNeeds.filter(n => n !== 'none');
+      
+      const index = this.onboardingData.accessibilityNeeds.indexOf(need);
+      if (index > -1) {
+        this.onboardingData.accessibilityNeeds.splice(index, 1);
+      } else {
+        this.onboardingData.accessibilityNeeds.push(need);
+      }
+      
+      // If no accessibility needs are selected, default to "none"
+      if (this.onboardingData.accessibilityNeeds.length === 0) {
+        this.onboardingData.accessibilityNeeds = ['none'];
+      }
+    }
+  }
+
+  isAccessibilityNeedSelected(need: string): boolean {
+    return this.onboardingData.accessibilityNeeds.includes(need);
+  }
+
   canProceed(): boolean {
     switch (this.currentStep) {
       case 1:
-        return this.onboardingData.userType !== null;
+        return this.onboardingData.accessibilityNeeds.length > 0;
       case 2:
-        return this.onboardingData.stayDuration !== null;
+        return this.onboardingData.userType !== null;
       case 3:
+        return this.onboardingData.stayDuration !== null;
+      case 4:
         return this.onboardingData.goals.length > 0;
       default:
         return false;
@@ -123,10 +160,12 @@ export class OnboardingComponent {
   getStepTitle(): string {
     switch (this.currentStep) {
       case 1:
-        return 'Who are you?';
+        return 'Accessibility Support';
       case 2:
-        return 'How long are you staying?';
+        return 'Who are you?';
       case 3:
+        return 'How long are you staying?';
+      case 4:
         return 'What do you want to do?';
       default:
         return '';
@@ -136,10 +175,12 @@ export class OnboardingComponent {
   getStepDescription(): string {
     switch (this.currentStep) {
       case 1:
-        return 'Select your profile to personalize your experience';
+        return 'Let us know if you need any accessibility assistance to make your experience better';
       case 2:
-        return 'Help us plan your stay better';
+        return 'Select your profile to personalize your experience';
       case 3:
+        return 'Help us plan your stay better';
+      case 4:
         return 'Choose the activities that interest you most';
       default:
         return '';
