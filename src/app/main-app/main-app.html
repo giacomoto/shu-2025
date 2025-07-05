@@ -161,22 +161,44 @@
     <!-- Profile Tab -->
     <div class="tab-content" *ngIf="currentTab === 'profile'">
       <div class="profile-section">
-        <div class="profile-info">
-          <div class="info-item">
-            <span class="info-label">User type:</span>
-            <span class="info-value">{{ userData.userType === 'citizen' ? 'Spello Citizen' : 'Tourist' }}</span>
+
+        <!-- CieID Integration Section -->
+        <div class="cieid-section">
+          <div class="cieid-header">
+            <h3 class="cieid-title">Digital Identity</h3>
+            <p class="cieid-subtitle">Access with your digital identity</p>
+          </div>
+          
+          <div class="cieid-button-container">
+            <button class="cieid-button" (click)="loginWithCieID()">
+              <div class="cieid-logo">
+                <div class="cieid-icon">🆔</div>
+              </div>
+              <div class="cieid-text">
+                <span class="cieid-main-text">Login with CieID</span>
+                <span class="cieid-sub-text">Electronic Identity Card</span>
+              </div>
+            </button>
           </div>
 
-          <div class="info-item">
-            <span class="info-label">Stay duration:</span>
-            <span class="info-value">{{ userData.stayDuration }} {{ userData.stayDuration === 1 ? 'day' : 'days'
-              }}</span>
-          </div>
-
-          <div class="info-item">
-            <span class="info-label">Goals:</span>
-            <div class="goals-list">
-              <span class="goal-tag" *ngFor="let goal of userData.goals">{{ goal }}</span>
+          <div class="cieid-info">
+            <p class="cieid-description">
+              Access securely using your Electronic Identity Card (CIE) 
+              to access the digital services of the Municipality of Spello.
+            </p>
+            <div class="cieid-benefits">
+              <div class="benefit-item">
+                <span class="benefit-icon">🔒</span>
+                <span class="benefit-text">Secure and verified access</span>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">⚡</span>
+                <span class="benefit-text">Quick and simple procedure</span>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">📱</span>
+                <span class="benefit-text">Smartphone compatible</span>
+              </div>
             </div>
           </div>
         </div>

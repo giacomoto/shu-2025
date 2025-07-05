@@ -303,4 +303,12 @@ export class MainAppComponent implements OnInit {
       // In a real implementation, this would send the message to a chatbot service
     }
   }
+
+  loginWithCieID() {
+    // Handle CieID login logic
+    console.log('Initiating CieID login...');
+    // This would integrate with the official CieID service
+    // For now, we'll show a placeholder message
+    alert('Integrazione CieID - Questa funzionalità si connetterà al servizio ufficiale CieID per l\'autenticazione.');
+  }
 }
