@@ -168,4 +168,107 @@
       <span class="tab-label">{{ category.name }}</span>
     </button>
   </nav>
+
+  <!-- Floating Action Button -->
+  <button class="fab-button" (click)="openChatbot()" [attr.aria-label]="'Open chatbot'">
+    <span class="fab-icon">🤖</span>
+  </button>
+
+  <!-- Chatbot Modal -->
+  <div class="modal-overlay" *ngIf="isChatbotOpen" [class.closing]="isClosing" (click)="closeChatbot()">
+    <div class="modal-content" [class.closing]="isClosing" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2 class="modal-title">Chat with Olivia</h2>
+        <button class="close-button" (click)="closeChatbot()">
+          <span class="close-icon">×</span>
+        </button>
+      </div>
+      
+      <div class="chatbot-container">
+        <!-- Chat Messages -->
+        <div class="chat-messages" #chatMessages>
+          <!-- Welcome Message -->
+          <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+              <div class="message-bubble bot-bubble">
+                <p>Hello! I'm Olivia, your virtual assistant for Spello citizens. I can help you with information about city services, transport, healthcare, events, and more. How can I assist you today?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+          </div>
+
+          <!-- Sample User Message -->
+          <div class="message user-message">
+            <div class="message-content">
+              <div class="message-bubble user-bubble">
+                <p>Where can I pay my local taxes?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+            <div class="message-avatar">👤</div>
+          </div>
+
+          <!-- Sample Bot Response -->
+          <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+              <div class="message-bubble bot-bubble">
+                <p>You can pay your local taxes (IMU, TARI, etc.) through several methods:</p>
+                <ul>
+                  <li><strong>Online</strong> - Through the municipality website</li>
+                  <li><strong>In person</strong> - At the municipal offices during business hours</li>
+                  <li><strong>Bank transfer</strong> - Using the payment slips you received</li>
+                  <li><strong>Post office</strong> - At any Poste Italiane location</li>
+                </ul>
+                <p>You can find the Tax Payments service in the Services section above. Would you like more specific information about any of these methods?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+          </div>
+
+          <!-- Another User Message -->
+          <div class="message user-message">
+            <div class="message-content">
+              <div class="message-bubble user-bubble">
+                <p>What are the bus schedules for today?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+            <div class="message-avatar">👤</div>
+          </div>
+
+          <!-- Another Bot Response -->
+          <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+              <div class="message-bubble bot-bubble">
+                <p>For current bus schedules, you can check the Transport section where you'll find:</p>
+                <ul>
+                  <li><strong>Bus Schedules</strong> - Local and regional routes</li>
+                  <li><strong>Umbria Mobilità</strong> - Official transport website</li>
+                  <li><strong>Real-time updates</strong> - Current delays and changes</li>
+                </ul>
+                <p>The main routes from Spello connect to Perugia, Assisi, and other nearby towns. Would you like information about a specific route?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+          <div class="chat-input-wrapper">
+            <input type="text" 
+                   class="chat-input" 
+                   placeholder="Ask me about city services, transport, events..."
+                   #chatInput>
+            <button class="send-button" (click)="sendMessage(chatInput.value); chatInput.value = ''">
+              <span class="send-icon">📤</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

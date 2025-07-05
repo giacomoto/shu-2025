@@ -22,6 +22,8 @@ interface CitizenLink {
 })
 export class CitizenComponent implements OnInit {
   currentTab = 'services';
+  isChatbotOpen = false;
+  isClosing = false;
 
   userData: OnboardingData = {
     userType: null,
@@ -393,5 +395,27 @@ export class CitizenComponent implements OnInit {
 
   trackByLink(index: number, link: CitizenLink): string {
     return link.id;
+  }
+
+  openChatbot() {
+    this.isChatbotOpen = true;
+    this.isClosing = false;
+  }
+
+  closeChatbot() {
+    this.isClosing = true;
+    // Delay closing to allow exit animation to complete
+    setTimeout(() => {
+      this.isChatbotOpen = false;
+      this.isClosing = false;
+    }, 200);
+  }
+
+  sendMessage(message: string) {
+    // For now, just log the message (static functionality)
+    if (message.trim()) {
+      console.log('Citizen message:', message);
+      // In a real implementation, this would send the message to a chatbot service
+    }
   }
 }
