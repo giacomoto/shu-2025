@@ -578,3 +578,10 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .chatbot-container {
+    height: calc(100vh - 185px);
+    padding-bottom: 2.5rem;
+  }
+}
