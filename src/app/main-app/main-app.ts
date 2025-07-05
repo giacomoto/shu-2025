@@ -254,4 +254,12 @@ export class MainAppComponent implements OnInit {
   trackByEvent(index: number, event: Event): string {
     return event.id;
   }
+
+  sendMessage(message: string) {
+    // For now, just log the message (static functionality)
+    if (message.trim()) {
+      console.log('User message:', message);
+      // In a real implementation, this would send the message to a chatbot service
+    }
+  }
 }

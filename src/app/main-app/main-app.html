@@ -67,10 +67,85 @@
 
     <!-- Chatbot Tab -->
     <div class="tab-content" *ngIf="currentTab === 'chatbot'">
-      <div class="chatbot-placeholder">
-        <div class="chatbot-icon">🤖</div>
-        <h3>Chatbot Assistant</h3>
-        <p>Ask questions and get help from the virtual assistant.</p>
+      <div class="chatbot-container">
+        <!-- Chat Messages -->
+        <div class="chat-messages">
+          <!-- Welcome Message -->
+          <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+              <div class="message-bubble bot-bubble">
+                <p>Hello! I'm Olivia, your virtual assistant for Spello. I'm here to help you with information about local attractions, restaurants, events, and more. How can I assist you today?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+          </div>
+
+          <!-- Sample User Message -->
+          <div class="message user-message">
+            <div class="message-content">
+              <div class="message-bubble user-bubble">
+                <p>What are the best restaurants in Spello?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+            <div class="message-avatar">👤</div>
+          </div>
+
+          <!-- Sample Bot Response -->
+          <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+              <div class="message-bubble bot-bubble">
+                <p>Great question! Here are some of the best restaurants in Spello:</p>
+                <ul>
+                  <li><strong>Ristorante Il Tempio</strong> - Traditional Umbrian cuisine with panoramic views</li>
+                  <li><strong>Ristorante La Bastiglia</strong> - Refined cuisine in a historic setting</li>
+                  <li><strong>Bar Centrale</strong> - Perfect for typical Italian breakfast</li>
+                </ul>
+                <p>All of these are included in your itinerary. Would you like more details about any of them?</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+          </div>
+
+          <!-- Another User Message -->
+          <div class="message user-message">
+            <div class="message-content">
+              <div class="message-bubble user-bubble">
+                <p>Tell me more about the Infiorata Festival</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+            <div class="message-avatar">👤</div>
+          </div>
+
+          <!-- Another Bot Response -->
+          <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+              <div class="message-bubble bot-bubble">
+                <p>The Infiorata Festival is one of Spello's most famous events! 🌸</p>
+                <p>It takes place during Corpus Christi (usually in May or June) and features stunning flower carpets created by local artists along the streets. The entire town participates in creating these beautiful, intricate designs using flower petals.</p>
+                <p>I notice you have an Infiorata Workshop scheduled for Day 2 of your itinerary - you'll get to learn this traditional art form from local masters!</p>
+              </div>
+              <div class="message-time">Just now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+          <div class="chat-input-wrapper">
+            <input type="text" 
+                   class="chat-input" 
+                   placeholder="Ask me anything about Spello..."
+                   #chatInput>
+            <button class="send-button" (click)="sendMessage(chatInput.value); chatInput.value = ''">
+              <span class="send-icon">📤</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
