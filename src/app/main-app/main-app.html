@@ -43,6 +43,15 @@
                   <div class="event-category">
                     <span class="category-badge">{{ event.category }}</span>
                   </div>
+                  <div class="event-accessibility" *ngIf="event.accessibility && event.accessibility.length > 0">
+                    <div class="accessibility-icons">
+                      <span class="accessibility-icon" 
+                            *ngFor="let acc of event.accessibility" 
+                            [title]="getAccessibilityLabel(acc)">
+                        {{ getAccessibilityIcon(acc) }}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

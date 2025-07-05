@@ -16,6 +16,7 @@ interface Event {
   category: string;
   duration?: string;
   price?: string;
+  accessibility?: string[];
 }
 
 @Component({
@@ -47,6 +48,7 @@ export class MainAppComponent implements OnInit {
       category: 'Gastronomy',
       duration: '45 min',
       price: '€5-8',
+      accessibility: ['mobility', 'visual'],
     },
     {
       id: '2',
@@ -59,6 +61,7 @@ export class MainAppComponent implements OnInit {
       category: 'Art & History',
       duration: '1h 30min',
       price: 'Free',
+      accessibility: ['mobility', 'visual', 'hearing'],
     },
     {
       id: '3',
@@ -71,6 +74,7 @@ export class MainAppComponent implements OnInit {
       category: 'Nature',
       duration: '1h',
       price: 'Free',
+      accessibility: ['mobility'],
     },
     {
       id: '4',
@@ -83,6 +87,7 @@ export class MainAppComponent implements OnInit {
       category: 'Gastronomy',
       duration: '1h 30min',
       price: '€25-35',
+      accessibility: ['mobility', 'visual'],
     },
     {
       id: '5',
@@ -95,6 +100,7 @@ export class MainAppComponent implements OnInit {
       category: 'Culture',
       duration: '2h',
       price: '€15',
+      accessibility: ['mobility', 'visual', 'cognitive'],
     },
     {
       id: '6',
@@ -107,6 +113,7 @@ export class MainAppComponent implements OnInit {
       category: 'Wine & Food',
       duration: '1h',
       price: '€20',
+      accessibility: ['mobility', 'visual'],
     },
     {
       id: '7',
@@ -119,6 +126,7 @@ export class MainAppComponent implements OnInit {
       category: 'Shopping',
       duration: '1h 30min',
       price: 'Variable',
+      accessibility: ['mobility', 'visual'],
     },
     {
       id: '8',
@@ -131,6 +139,7 @@ export class MainAppComponent implements OnInit {
       category: 'Gastronomy',
       duration: '2h',
       price: '€40-60',
+      accessibility: ['mobility', 'visual'],
     },
     {
       id: '9',
@@ -143,6 +152,7 @@ export class MainAppComponent implements OnInit {
       category: 'Art & History',
       duration: '45min',
       price: 'Free',
+      accessibility: ['mobility', 'visual'],
     },
     {
       id: '10',
@@ -155,6 +165,7 @@ export class MainAppComponent implements OnInit {
       category: 'Nature',
       duration: '3h',
       price: '€10',
+      accessibility: ['mobility'],
     },
   ];
 
@@ -199,6 +210,36 @@ export class MainAppComponent implements OnInit {
         return 'activity';
       default:
         return 'default';
+    }
+  }
+
+  getAccessibilityIcon(type: string): string {
+    switch (type) {
+      case 'mobility':
+        return '♿';
+      case 'visual':
+        return '👁️';
+      case 'hearing':
+        return '👂';
+      case 'cognitive':
+        return '🧠';
+      default:
+        return '♿';
+    }
+  }
+
+  getAccessibilityLabel(type: string): string {
+    switch (type) {
+      case 'mobility':
+        return 'Accessibilità per mobilità ridotta';
+      case 'visual':
+        return 'Supporto per disabilità visive';
+      case 'hearing':
+        return 'Supporto per disabilità uditive';
+      case 'cognitive':
+        return 'Supporto cognitivo';
+      default:
+        return 'Accessibilità';
     }
   }
 

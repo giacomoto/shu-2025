@@ -246,6 +246,31 @@
   font-weight: 500;
 }
 
+.event-accessibility {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.accessibility-icons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.accessibility-icon {
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 4px;
+  background: rgba(45, 80, 22, 0.1);
+  cursor: help;
+  transition: all 0.2s ease;
+}
+
+.accessibility-icon:hover {
+  background: rgba(45, 80, 22, 0.2);
+  transform: scale(1.1);
+}
+
 /* Placeholder Content */
 .map-placeholder,
 .favorites-placeholder {
