@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataService, OnboardingData } from '../services/user-data';
 
@@ -16,7 +17,7 @@ interface CitizenLink {
 @Component({
   selector: 'app-citizen',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './citizen.html',
   styleUrl: './citizen.css',
 })
@@ -31,6 +32,32 @@ export class CitizenComponent implements OnInit {
     goals: [],
     accessibilityNeeds: [],
   };
+
+  reportForm = {
+    issueType: '',
+    title: '',
+    description: '',
+    location: '',
+    priority: 'medium',
+    attachments: [] as string[]
+  };
+
+  issueTypes = [
+    { value: 'streetlight', label: 'Streetlight Problem', icon: '💡' },
+    { value: 'pothole', label: 'Pothole', icon: '🕳️' },
+    { value: 'garbage', label: 'Garbage Collection', icon: '🗑️' },
+    { value: 'traffic', label: 'Traffic Signal', icon: '🚦' },
+    { value: 'water', label: 'Water Issue', icon: '💧' },
+    { value: 'noise', label: 'Noise Complaint', icon: '🔊' },
+    { value: 'other', label: 'Other', icon: '❓' }
+  ];
+
+  priorityLevels = [
+    { value: 'low', label: 'Low', color: '#22c55e' },
+    { value: 'medium', label: 'Medium', color: '#f59e0b' },
+    { value: 'high', label: 'High', color: '#ef4444' },
+    { value: 'urgent', label: 'Urgent', color: '#dc2626' }
+  ];
 
   citizenLinks: CitizenLink[] = [
     {
@@ -305,6 +332,7 @@ export class CitizenComponent implements OnInit {
     { id: 'transport', name: 'Transport', icon: '🚌' },
     { id: 'health', name: 'Health', icon: '🏥' },
     { id: 'events', name: 'Events', icon: '📅' },
+    { id: 'report', name: 'Report Issue', icon: '🛠️' },
   ];
 
   constructor(
@@ -336,6 +364,9 @@ export class CitizenComponent implements OnInit {
     } else {
       console.log('Link clicked:', link.title);
       // Handle internal actions
+      if (link.title === 'Report an Issue') {
+        this.setTab('report');
+      }
     }
   }
 
@@ -361,6 +392,8 @@ export class CitizenComponent implements OnInit {
         return 'Emergency';
       case 'shopping':
         return 'Shopping';
+      case 'report':
+        return 'Report an Issue';
       default:
         return 'Spello Citizen';
     }
@@ -388,6 +421,8 @@ export class CitizenComponent implements OnInit {
         return 'Emergency contacts and services';
       case 'shopping':
         return 'Local markets and shopping';
+      case 'report':
+        return 'Report problems and issues in Spello';
       default:
         return 'Your Spello Community';
     }
@@ -417,5 +452,38 @@ export class CitizenComponent implements OnInit {
       console.log('Citizen message:', message);
       // In a real implementation, this would send the message to a chatbot service
     }
+  }
+
+  addAttachment() {
+    // Mock function to add attachments
+    console.log('Adding attachment...');
+    this.reportForm.attachments.push(`attachment_${this.reportForm.attachments.length + 1}.jpg`);
+  }
+
+  removeAttachment(index: number) {
+    this.reportForm.attachments.splice(index, 1);
+  }
+
+  submitReport() {
+    console.log('Submitting report:', this.reportForm);
+    // This would integrate with the actual reporting system
+    alert('Report submitted successfully! You will receive a confirmation email.');
+    this.resetReportForm();
+  }
+
+  resetReportForm() {
+    this.reportForm = {
+      issueType: '',
+      title: '',
+      description: '',
+      location: '',
+      priority: 'medium',
+      attachments: []
+    };
+  }
+
+  loginWithCieID() {
+    console.log('Initiating CieID login for report submission...');
+    alert('CieID Integration - This will connect to the official CieID service for authentication.');
   }
 }

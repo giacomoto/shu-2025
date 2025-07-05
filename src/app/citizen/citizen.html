@@ -158,6 +158,129 @@
         </div>
       </div>
     </div>
+
+    <!-- Report Issue Tab -->
+    <div class="tab-content" *ngIf="currentTab === 'report'">
+      <div class="report-form-container">
+        <div class="report-form">
+          <div class="form-section">
+            <h3 class="section-title">Issue Information</h3>
+            
+            <!-- Issue Type Selection -->
+            <div class="form-group">
+              <label class="form-label">Type of Issue *</label>
+              <div class="issue-type-grid">
+                <button 
+                  *ngFor="let type of issueTypes" 
+                  class="issue-type-button"
+                  [class.selected]="reportForm.issueType === type.value"
+                  (click)="reportForm.issueType = type.value">
+                  <span class="issue-type-icon">{{ type.icon }}</span>
+                  <span class="issue-type-label">{{ type.label }}</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <div class="form-group">
+              <label class="form-label" for="issue-title">Title *</label>
+              <input 
+                type="text" 
+                id="issue-title"
+                class="form-input" 
+                placeholder="Brief description of the issue"
+                [(ngModel)]="reportForm.title">
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+              <label class="form-label" for="issue-description">Description *</label>
+              <textarea 
+                id="issue-description"
+                class="form-textarea" 
+                placeholder="Provide detailed information about the issue..."
+                rows="4"
+                [(ngModel)]="reportForm.description"></textarea>
+            </div>
+
+            <!-- Location -->
+            <div class="form-group">
+              <label class="form-label" for="issue-location">Location *</label>
+              <input 
+                type="text" 
+                id="issue-location"
+                class="form-input" 
+                placeholder="Street address or area in Spello"
+                [(ngModel)]="reportForm.location">
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group">
+              <label class="form-label">Priority Level</label>
+              <div class="priority-buttons">
+                <button 
+                  *ngFor="let priority of priorityLevels" 
+                  class="priority-button"
+                  [class.selected]="reportForm.priority === priority.value"
+                  [style.--priority-color]="priority.color"
+                  (click)="reportForm.priority = priority.value">
+                  {{ priority.label }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attachments Section -->
+          <div class="form-section">
+            <h3 class="section-title">Attachments</h3>
+            <div class="form-group">
+              <label class="form-label">Add Photos or Files</label>
+              <div class="attachment-area">
+                <button class="attachment-button" (click)="addAttachment()">
+                  <span class="attachment-icon">📎</span>
+                  <span class="attachment-text">Add Attachment</span>
+                </button>
+                <p class="attachment-hint">You can add photos, documents, or other files to help describe the issue</p>
+              </div>
+              
+              <!-- Attachment List -->
+              <div class="attachment-list" *ngIf="reportForm.attachments.length > 0">
+                <div class="attachment-item" *ngFor="let attachment of reportForm.attachments; let i = index">
+                  <span class="attachment-name">{{ attachment }}</span>
+                  <button class="remove-attachment" (click)="removeAttachment(i)">
+                    <span class="remove-icon">×</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Section -->
+          <div class="form-section">
+            <h3 class="section-title">Submit Report</h3>
+            <div class="submit-options">
+              <div class="submit-option">
+                <h4 class="submit-title">Submit with CieID</h4>
+                <p class="submit-description">Use your digital identity for secure and authenticated submission</p>
+                <button class="submit-button cieid-button" (click)="loginWithCieID()">
+                  <span class="cieid-icon">🆔</span>
+                  <span class="cieid-text">Login with CieID</span>
+                </button>
+              </div>
+              
+              <div class="submit-option">
+                <h4 class="submit-title">Submit Anonymously</h4>
+                <p class="submit-description">Submit without authentication (limited tracking capabilities)</p>
+                <button class="submit-button anonymous-button" (click)="submitReport()">
+                  <span class="submit-icon">📤</span>
+                  <span class="submit-text">Submit Report</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- Bottom Tab Navigation -->

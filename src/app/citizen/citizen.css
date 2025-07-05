@@ -652,4 +652,378 @@
       opacity: 0;
     }
   }
-} 
+}
+
+/* Report Form Styles */
+.report-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.report-form {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.form-section {
+  padding: 2rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--green-primary);
+  box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Issue Type Grid */
+.issue-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.issue-type-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.issue-type-button:hover {
+  border-color: var(--green-primary);
+  background: #f8f9fa;
+}
+
+.issue-type-button.selected {
+  border-color: var(--green-primary);
+  background: var(--green-primary);
+  color: white;
+}
+
+.issue-type-icon {
+  font-size: 1.5rem;
+}
+
+.issue-type-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Priority Buttons */
+.priority-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.priority-button {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-weight: 500;
+  color: #666;
+}
+
+.priority-button:hover {
+  border-color: var(--priority-color);
+  color: var(--priority-color);
+}
+
+.priority-button.selected {
+  border-color: var(--priority-color);
+  background: var(--priority-color);
+  color: white;
+}
+
+/* Attachment Area */
+.attachment-area {
+  border: 2px dashed #e0e0e0;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.attachment-area:hover {
+  border-color: var(--green-primary);
+  background: #f8f9fa;
+}
+
+.attachment-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.attachment-button:hover {
+  color: var(--green-primary);
+}
+
+.attachment-icon {
+  font-size: 2rem;
+}
+
+.attachment-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.attachment-hint {
+  margin: 1rem 0 0 0;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Attachment List */
+.attachment-list {
+  margin-top: 1rem;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.attachment-name {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.remove-attachment {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.remove-attachment:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+.remove-icon {
+  font-weight: bold;
+}
+
+/* Submit Options */
+.submit-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.submit-option {
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.submit-option:hover {
+  border-color: var(--green-primary);
+  background: #f8f9fa;
+}
+
+.submit-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+}
+
+.submit-description {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+}
+
+.cieid-button {
+  background: var(--green-primary);
+  color: white;
+}
+
+.cieid-button:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+}
+
+.anonymous-button {
+  background: #6b7280;
+  color: white;
+}
+
+.anonymous-button:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+}
+
+.cieid-icon,
+.submit-icon {
+  font-size: 1.1rem;
+}
+
+.cieid-text,
+.submit-text {
+  font-weight: 500;
+}
+
+/* Mobile Responsive for Report Form */
+@media (max-width: 768px) {
+  .report-form-container {
+    padding: 0.5rem 0;
+  }
+
+  .form-section {
+    padding: 1.5rem;
+  }
+
+  .issue-type-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .issue-type-button {
+    padding: 0.75rem;
+  }
+
+  .issue-type-icon {
+    font-size: 1.25rem;
+  }
+
+  .issue-type-label {
+    font-size: 0.8rem;
+  }
+
+  .priority-buttons {
+    gap: 0.5rem;
+  }
+
+  .priority-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .submit-option {
+    padding: 1rem;
+  }
+
+  .attachment-area {
+    padding: 1.5rem;
+  }
+
+  .attachment-button {
+    padding: 0.75rem;
+  }
+
+  .attachment-icon {
+    font-size: 1.5rem;
+  }
+}
