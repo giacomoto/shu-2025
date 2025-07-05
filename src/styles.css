@@ -15,7 +15,7 @@
   /* Background Gradients */
   --bg-gradient-primary: linear-gradient(135deg, #2d5016 0%, #4a7c59 25%, #6b8e23 50%, #8fbc8f 75%, #98fb98 100%);
   --bg-gradient-light: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-  --bg-gradient-header: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  --bg-gradient-header: linear-gradient(135deg, #6b8e23 0%, #2d5016 100%);
   
   /* Text Colors */
   --text-primary: #333;
