@@ -2,16 +2,8 @@
   <!-- Background with Italian countryside theme -->
   <div class="background-overlay"></div>
   
-  <!-- Header with OlivIA branding -->
+  <!-- Header with Progress indicator -->
   <header class="onboarding-header">
-    <div class="logo-section">
-      <div class="olive-icon-small">
-        <div class="olive-leaf-small"></div>
-        <div class="olive-fruit-small"></div>
-      </div>
-      <h1 class="app-title-small">OlivIA</h1>
-    </div>
-    
     <!-- Progress indicator -->
     <div class="progress-container">
       <div class="progress-bar">
@@ -129,14 +121,12 @@
   </main>
 
   <!-- Navigation buttons -->
-  <footer class="onboarding-footer">
+  <footer class="onboarding-footer" [class.single-button]="currentStep === 1">
     <button class="nav-button secondary" 
             *ngIf="currentStep > 1"
             (click)="previousStep()">
       ← Back
     </button>
-    
-    <div class="nav-spacer" *ngIf="currentStep === 1"></div>
     
     <button class="nav-button primary" 
             [disabled]="!canProceed()"

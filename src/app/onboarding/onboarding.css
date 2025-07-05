@@ -35,52 +35,14 @@
   z-index: 10;
   padding: 2rem 2rem 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
 
-.olive-icon-small {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.olive-leaf-small {
-  position: absolute;
-  width: 15px;
-  height: 8px;
-  background: linear-gradient(45deg, #556b2f, #6b8e23);
-  border-radius: 8px 0 8px 0;
-  top: 5px;
-  left: 5px;
-  transform: rotate(-45deg);
-}
-
-.olive-fruit-small {
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle, #8fbc8f, #556b2f);
-  border-radius: 50%;
-}
-
-.app-title-small {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-  margin: 0;
-}
 
 /* Progress Bar */
 .progress-container {
@@ -162,7 +124,7 @@
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 0.5rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -473,6 +435,10 @@
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
 
+.onboarding-footer.single-button {
+  justify-content: flex-end;
+}
+
 .nav-button {
   padding: 1rem 2rem;
   border: none;
@@ -557,16 +523,16 @@
 
   .onboarding-footer {
     padding: 1.5rem 1rem;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
   }
 
   .onboarding-content {
-    padding-bottom: 140px; /* More space on mobile for stacked buttons */
+    padding-bottom: 120px; /* Less space needed since buttons are on same line */
   }
 
   .nav-button {
-    width: 100%;
+    flex: 1;
     min-width: auto;
   }
 

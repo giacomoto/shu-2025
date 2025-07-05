@@ -41,6 +41,7 @@
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  padding: 1.5rem;
 }
 
 .tab-content {
